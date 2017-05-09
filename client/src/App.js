@@ -15,13 +15,16 @@ class TodoItem extends Component{
     removeItem(){
       this.props.removeNode(this.props.todo.id);
     }
-
+    editItem(){
+      this.props.editItem(this.props.todo);
+    }
     render(){
       return(
-      <li key={this.props.todo.id}>
-        <span>{this.props.todo.text}</span>
-        <button onClick={()=>this.removeItem()}>X</button>
-      </li>
+      <tr key={this.props.todo.id}>
+        <td>{this.props.todo.text}</td>
+        <td><button onClick={()=>this.removeItem()}>X</button></td>
+        <td><button onClick={()=>this.editItem()}>/</button></td>
+      </tr>
     );
     }
 }
@@ -31,13 +34,16 @@ class TodoList extends Component{
     super();
     this.state = {
       list:TodoStore.getAll(),
-      value:'',
+      value:{
+        text:'',
+        id:0
+      },
     };
     this.reloadTodos = this.reloadTodos.bind(this);
   }
 
 reloadTodos(){
-  this.setState({list:TodoStore.getAll(),value:''});
+  this.setState({list:TodoStore.getAll(),value:{text:'',id:0}});
 }
   componentWillMount(){
     TodoStore.on("change", this.reloadTodos);
@@ -47,18 +53,24 @@ reloadTodos(){
     TodoStore.removeListener("change", this.reloadTodos);
   }
 
+
+
   render(){
     var list = [];
     for(var i=0;i<this.state.list.length;i++){
       list.push(
-        <TodoItem key={this.state.list[i].id} todo={this.state.list[i]} removeNode={(x)=>this.removeTodo(x)}/>
+        <TodoItem key={this.state.list[i].id}
+                  todo={this.state.list[i]}
+                  removeNode={(x)=>this.removeTodo(x)}
+                  editItem={(x)=>this.editTodo(x)}
+                  />
       );
     }
     return(
       <div>
         <div>
           <input  type="text"
-                  value={this.state.value}
+                  value={this.state.value.text}
                   placeholder="What do you want to do?"
                   onChange={(e)=>this.handleChange(e)}
                   onKeyPress={(e)=>this.handleKeyPress(e)}
@@ -66,9 +78,11 @@ reloadTodos(){
           <button onClick={(e)=>this.addTodo(e)} >Add</button>
         </div>
         <div>
-          <ul>
-            {list}
-          </ul>
+          <table>
+            <tbody>
+              {list}
+            </tbody>
+          </table>
         </div>
       </div>
   );
@@ -81,17 +95,27 @@ reloadTodos(){
   }
 
   addTodo(event){
-    todoActions.createTodo(this.state.value);
+    if (this.state.value.id == 0) {
+      todoActions.createTodo(this.state.value);
+    }else{
+      todoActions.modifyTodo(this.state.value);
+    }
   }
 
   handleChange(event){
     const curr_state = this.state;
-    curr_state.value = event.target.value;
+    curr_state.value.text = event.target.value;
     this.setState(curr_state);
   }
 
   removeTodo(id){
     todoActions.deleteTodo(id);
+  }
+
+  editTodo(todo){
+      const curr_state = this.state;
+      curr_state.value = todo;
+      this.setState(curr_state);
   }
 }
 //<img src={logo} className="App-logo" alt="logo" />
@@ -109,9 +133,9 @@ class App extends Component {
         <Router>
           <div>
             <Link to='/'>Home</Link>&nbsp;
-            <Link to='/page1'>Page1</Link>&nbsp;
-            <Link to='/page2'>Page2</Link>&nbsp;
-            <Link to='/page3'>Page Three</Link>
+            <Link to='/page1'>One 1</Link>&nbsp;
+            <Link to='/page2'>Two 2</Link>&nbsp;
+            <Link to='/page3'>Three 3</Link>
             <Switch>
               <Route path="/" exact component={TodoList}/>
               <Route path="/page1" component={Page1}/>

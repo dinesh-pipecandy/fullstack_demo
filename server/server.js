@@ -21,7 +21,7 @@ app.use(function(req,res,next){
   next();
 });
 
-app.use(loopback.static('/home/hp/Experiments/lb_React_gulp/React_lb/client/build/'));
+app.use(loopback.static('/home/hp/git/fullstack_demo/client/build/'));
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {

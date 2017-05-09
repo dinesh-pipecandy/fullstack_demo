@@ -1,4 +1,5 @@
 var path = require("path");
+var webpack = require('webpack');
 module.exports = {
   entry: {
     app: ["./src/index.js"]
@@ -32,5 +33,12 @@ module.exports = {
             loaders:["ignore-loader"]
           }
        ]
+  },
+  plugins:[
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer:{
+    hot:true,
+    contentBase: './build'
   }
 };

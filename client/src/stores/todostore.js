@@ -21,12 +21,10 @@ class TodoStore extends EventEmitter{
     return this.todos;
   }
 
-  createTodo(text){
+  createTodo(todo){
+    console.log(todo);
     self = this;
-    axios.post('/api/todo',{
-        "text": text,
-        "id": 0
-    }).then(
+    axios.post('/api/todo',todo).then(
       function(res){
         self.refresh();
       }
@@ -42,16 +40,27 @@ class TodoStore extends EventEmitter{
       );
   }
 
+  modifyTodo(todo){
+    self = this;
+    axios.put('/api/todo',todo).then(
+      function(res){
+        self.refresh();
+      }
+    );
+  }
+
   handleActions(action){
     switch(action.type){
       case "CREATE_TODO" :
-        this.createTodo(action.text);
+        this.createTodo(action.todo);
         break;
 
       case "DELETE_TODO":
         this.deleteTodo(action.id);
         break;
-
+      case "MODIFY_TODO":
+        this.modifyTodo(action.todo);
+        break;
       default: break;
 
     }
