@@ -1,0 +1,44 @@
+{
+  "name": "test-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.1",
+    "flux": "^3.1.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "del": "^2.2.2",
+    "file-loader": "^0.11.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "ignore-loader": "^0.1.2",
+    "pump": "^1.0.2",
+    "react-hot-loader": "^1.3.1",
+    "react-scripts": "0.9.5",
+    "style-loader": "^0.17.0",
+    "svg-url-loader": "^2.0.2",
+    "webpack": "^2.2.0",
+    "webpack-stream": "^3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "webpack-dev-server --hot --inline --history-api-fallback --content-base build/"
+  }
+}

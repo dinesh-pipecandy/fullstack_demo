@@ -1,0 +1,30 @@
+{
+  "name": "cars",
+  "plural": "cars",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "number",
+      "required": true
+    },
+    "fuel": {
+      "type": "string",
+      "required": true
+    },
+    "transmission": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
