@@ -35,12 +35,12 @@
     "dataSource": "db",
     "public": false
   },
-  "cars": {
-    "dataSource": "db",
-    "public": true
-  },
   "todo": {
-    "dataSource": "db",
+    "dataSource": "mydb",
+    "public": false
+  },
+  "todolist": {
+    "dataSource": "test",
     "public": true
   }
 }

@@ -2,5 +2,26 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mydb": {
+    "host": "localhost",
+    "port": "5432",
+    "database": "testdb",
+    "password": "postgres",
+    "name": "mydb",
+    "user": "postgres",
+    "connector": "postgresql",
+    "schema": "todos",
+    "debug": true
+  },
+  "test": {
+    "host": "localhost",
+    "port": 5432,
+    "url": "postgres://postgres:postgres@localhost/testdb",
+    "database": "testdb",
+    "password": "postgres",
+    "name": "test",
+    "user": "postgres",
+    "connector": "postgresql"
   }
 }

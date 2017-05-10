@@ -1,7 +1,7 @@
 import {EventEmitter} from 'events';
 import dispatcher from "../dispatcher/dispatcher";
 var axios = require('axios');
-
+var url = '/api/todolist';
 class TodoStore extends EventEmitter{
   constructor(){
     super();
@@ -10,7 +10,7 @@ class TodoStore extends EventEmitter{
 
   refresh(){
     self = this;
-    axios.get('/api/todo')
+    axios.get(url)
       .then(function(res){
         self.todos = res.data;
         self.emit("change");
@@ -22,9 +22,10 @@ class TodoStore extends EventEmitter{
   }
 
   createTodo(todo){
-    console.log(todo);
     self = this;
-    axios.post('/api/todo',todo).then(
+    delete todo.id;
+    console.log(todo);
+    axios.post(url,todo).then(
       function(res){
         self.refresh();
       }
@@ -33,7 +34,7 @@ class TodoStore extends EventEmitter{
 
   deleteTodo(id){
       self = this;
-      axios.delete('/api/todo/'+id).then(
+      axios.delete(url+'/'+id).then(
         function(res){
           self.refresh();
         }
@@ -42,7 +43,7 @@ class TodoStore extends EventEmitter{
 
   modifyTodo(todo){
     self = this;
-    axios.put('/api/todo',todo).then(
+    axios.put(url,todo).then(
       function(res){
         self.refresh();
       }

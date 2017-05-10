@@ -129,6 +129,12 @@ async@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async/-/async-1.0.0.tgz#f8fc04ca3a13784ade9e1641af98578cfbd647a9"
 
+async@~2.1.4:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
+  dependencies:
+    lodash "^4.14.0"
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -173,7 +179,7 @@ bl@^1.0.0:
   dependencies:
     readable-stream "^2.0.5"
 
-bluebird@^3.4.6:
+bluebird@^3.1.1, bluebird@^3.4.6:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
@@ -1474,7 +1480,7 @@ loopback-context@^1.0.0:
   dependencies:
     continuation-local-storage "^3.1.7"
 
-loopback-datasource-juggler@^2.39.0, loopback-datasource-juggler@^2.8.0:
+loopback-datasource-juggler@^2.8.0:
   version "2.54.1"
   resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-2.54.1.tgz#f8e6424f2bc7a5b05a9dec1ab0262f921377db91"
   dependencies:
@@ -1485,6 +1491,23 @@ loopback-datasource-juggler@^2.39.0, loopback-datasource-juggler@^2.8.0:
     loopback-connector "^2.1.0"
     minimatch "^3.0.3"
     qs "^3.1.0"
+    shortid "^2.2.6"
+    strong-globalize "^2.6.2"
+    traverse "^0.6.6"
+    uuid "^3.0.1"
+
+loopback-datasource-juggler@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/loopback-datasource-juggler/-/loopback-datasource-juggler-3.6.1.tgz#87a86838f078ee14c80156fac45fdf5d31e4e9df"
+  dependencies:
+    async "~2.1.4"
+    bluebird "^3.1.1"
+    debug "^2.1.1"
+    depd "^1.0.0"
+    inflection "^1.6.0"
+    loopback-connector "^4.0.0"
+    minimatch "^3.0.3"
+    qs "^6.3.0"
     shortid "^2.2.6"
     strong-globalize "^2.6.2"
     traverse "^0.6.6"
@@ -1950,7 +1973,7 @@ q@^1.4.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
-qs@6.4.0, qs@^6.1.0, qs@^6.2.1, qs@~6.4.0:
+qs@6.4.0, qs@^6.1.0, qs@^6.2.1, qs@^6.3.0, qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 

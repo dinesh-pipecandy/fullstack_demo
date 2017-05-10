@@ -1,26 +1,15 @@
 {
-  "name": "cars",
-  "plural": "cars",
+  "name": "todolist",
+  "plural": "todolist",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "text": {
       "type": "string",
       "required": true
-    },
-    "year": {
-      "type": "number",
-      "required": true
-    },
-    "fuel": {
-      "type": "string",
-      "required": true
-    },
-    "transmission": {
-      "type": "string"
     }
   },
   "validations": [],
